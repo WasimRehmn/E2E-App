@@ -9,6 +9,9 @@ const EncryptRsa = require("encrypt-rsa").default;
 
 const socketio = require("socket.io");
 
+const PORT = 3001;
+
+
 const io = socketio(server, {
   cors: {
     origin: "http://localhost:3000",
@@ -18,7 +21,7 @@ const io = socketio(server, {
 
 require("./routes")(app);
 
-const chatBotName = "Deepak";
+const chatBotName = "Wasim";
 
 io.on("connection", (socket) => {
   const encryptRsa = new EncryptRsa();
@@ -43,8 +46,6 @@ io.on("connection", (socket) => {
     console.log("Client disconnected");
   });
 });
-
-const PORT = 3001;
 
 server.listen(PORT, () => {
   console.log("Listing on port 3001");
